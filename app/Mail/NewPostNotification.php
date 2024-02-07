@@ -21,7 +21,7 @@ class NewPostNotification extends Mailable
      * @var Post
      */
     protected $post;
-    
+
     /**
      * Create a new message instance.
      */
@@ -36,7 +36,7 @@ class NewPostNotification extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('vaswatip@gmail.com', 'Vaswati Pal'),
+            from: new Address(config('mail.mailers.smtp.email_from_address'), config('mail.mailers.smtp.email_from_name')),
             subject: 'New Post Notification',
         );
     }

@@ -36,7 +36,7 @@ class SendNewPostNotification implements ShouldQueue
      */
     public function handle(): void
     {
-        $users = User::where('id', '<>', $this->post->user_id)->limit(2)->get();
+        $users = User::where('id', '<>', $this->post->user_id)->get();
         
         foreach ($users as $user) {
             Mail::to($user->email)->send(new NewPostNotification($this->post));
