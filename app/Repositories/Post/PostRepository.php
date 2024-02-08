@@ -50,7 +50,7 @@ class PostRepository extends BaseRepository implements PostContract
                 'is_active' => true, // Assuming all posts are active by default
             ]);
 
-            // event(new PostCreated($post)); // Broadcasting event
+            event(new PostCreated($post)); // Broadcasting event
             SendNewPostNotification::dispatch($post); // Dispatching job for sending email notification
 
             DB::commit();
